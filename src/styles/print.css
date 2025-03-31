@@ -1,0 +1,259 @@
+/* Print styles */
+@media print {
+    /* Reset */
+    * {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    /* Layout */
+    body {
+        margin: 0;
+        padding: 0;
+        line-height: 1.4;
+        font-size: 12pt;
+        font-family: "Times New Roman", Times, serif;
+    }
+
+    /* Headers */
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+        page-break-inside: avoid;
+    }
+
+    h1 {
+        font-size: 24pt;
+        margin-bottom: 1em;
+    }
+
+    h2 {
+        font-size: 20pt;
+        margin-bottom: 0.8em;
+    }
+
+    h3 {
+        font-size: 16pt;
+        margin-bottom: 0.6em;
+    }
+
+    /* Links */
+    a {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+        font-size: 90%;
+    }
+
+    /* Images */
+    img {
+        max-width: 100% !important;
+        page-break-inside: avoid;
+    }
+
+    /* Tables */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        page-break-inside: avoid;
+    }
+
+    th, td {
+        border: 1px solid #000;
+        padding: 0.5em;
+    }
+
+    th {
+        background-color: #f0f0f0;
+    }
+
+    /* Lists */
+    ul, ol {
+        page-break-inside: avoid;
+        page-break-before: avoid;
+    }
+
+    li {
+        page-break-inside: avoid;
+        page-break-before: avoid;
+    }
+
+    /* Page breaks */
+    .page-break {
+        page-break-before: always;
+    }
+
+    /* Hide elements */
+    .no-print {
+        display: none !important;
+    }
+
+    /* Forms */
+    input, textarea, select {
+        border: 1px solid #000;
+        padding: 0.2em;
+    }
+
+    /* Buttons */
+    button {
+        display: none !important;
+    }
+
+    /* Charts and graphs */
+    .chart-container,
+    .graph-container {
+        border: 1px solid #000;
+        padding: 1em;
+        margin-bottom: 1em;
+    }
+
+    /* Cards */
+    .card {
+        border: 1px solid #000;
+        padding: 1em;
+        margin-bottom: 1em;
+        page-break-inside: avoid;
+    }
+
+    /* Grid layouts */
+    .grid {
+        display: block !important;
+    }
+
+    .grid > * {
+        display: block !important;
+        margin-bottom: 1em;
+    }
+
+    /* Navigation */
+    nav {
+        display: none !important;
+    }
+
+    /* Footer */
+    footer {
+        display: none !important;
+    }
+
+    /* Modals */
+    .modal {
+        display: none !important;
+    }
+
+    /* Alerts */
+    .alert {
+        border: 1px solid #000;
+        padding: 1em;
+        margin-bottom: 1em;
+    }
+
+    /* Badges */
+    .badge {
+        border: 1px solid #000;
+        padding: 0.2em 0.5em;
+        margin-right: 0.5em;
+    }
+
+    /* Code blocks */
+    pre, code {
+        border: 1px solid #000;
+        padding: 0.5em;
+        margin-bottom: 1em;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    /* Margins and padding */
+    .container {
+        width: 100% !important;
+        max-width: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Font sizes */
+    .text-sm {
+        font-size: 10pt !important;
+    }
+
+    .text-base {
+        font-size: 12pt !important;
+    }
+
+    .text-lg {
+        font-size: 14pt !important;
+    }
+
+    .text-xl {
+        font-size: 16pt !important;
+    }
+
+    /* Colors */
+    .text-primary {
+        color: #000 !important;
+    }
+
+    .text-secondary {
+        color: #333 !important;
+    }
+
+    .text-success {
+        color: #000 !important;
+    }
+
+    .text-warning {
+        color: #000 !important;
+    }
+
+    .text-danger {
+        color: #000 !important;
+    }
+
+    /* Backgrounds */
+    .bg-primary,
+    .bg-secondary,
+    .bg-success,
+    .bg-warning,
+    .bg-danger {
+        background-color: transparent !important;
+    }
+
+    /* Borders */
+    .border {
+        border: 1px solid #000 !important;
+    }
+
+    /* Shadows */
+    .shadow {
+        box-shadow: none !important;
+    }
+
+    /* Utilities */
+    .hidden {
+        display: none !important;
+    }
+
+    .visible {
+        display: block !important;
+    }
+
+    /* Page numbers */
+    @page {
+        margin: 2cm;
+    }
+
+    @page :first {
+        margin-top: 3cm;
+    }
+
+    @page :left {
+        margin-right: 2.5cm;
+    }
+
+    @page :right {
+        margin-left: 2.5cm;
+    }
+} 

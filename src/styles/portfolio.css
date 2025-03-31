@@ -1,0 +1,519 @@
+/* Portfolio summary */
+.portfolio-summary {
+    background-color: var(--white-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-md);
+}
+
+.portfolio-summary-header {
+    margin-bottom: var(--spacing-md);
+}
+
+.portfolio-summary-title {
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+    color: var(--dark-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.portfolio-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.portfolio-summary-item {
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    background-color: var(--light-color);
+}
+
+.portfolio-summary-label {
+    font-size: var(--font-size-sm);
+    color: var(--gray-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.portfolio-summary-value {
+    font-size: var(--font-size-xl);
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.portfolio-summary-value.positive {
+    color: var(--success-color);
+}
+
+.portfolio-summary-value.negative {
+    color: var(--danger-color);
+}
+
+/* Holdings */
+.holdings {
+    background-color: var(--white-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.holdings-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--light-color);
+}
+
+.holdings-title {
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.holdings-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.holdings-action {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--light-color);
+    border-radius: var(--border-radius-sm);
+    background-color: var(--white-color);
+    color: var(--gray-color);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.holdings-action:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.holdings-action.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.holdings-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.holdings-table th,
+.holdings-table td {
+    padding: var(--spacing-sm);
+    text-align: right;
+    font-size: var(--font-size-sm);
+}
+
+.holdings-table th {
+    font-weight: 500;
+    color: var(--gray-color);
+    background-color: var(--light-color);
+}
+
+.holdings-table td {
+    color: var(--dark-color);
+}
+
+.holdings-table tr:hover {
+    background-color: var(--light-color);
+}
+
+.holdings-table .symbol {
+    text-align: left;
+    font-weight: 500;
+}
+
+.holdings-table .quantity {
+    font-family: monospace;
+}
+
+.holdings-table .price {
+    font-family: monospace;
+}
+
+.holdings-table .value {
+    font-family: monospace;
+    font-weight: 500;
+}
+
+.holdings-table .change {
+    font-family: monospace;
+}
+
+.holdings-table .change.positive {
+    color: var(--success-color);
+}
+
+.holdings-table .change.negative {
+    color: var(--danger-color);
+}
+
+.holdings-table .actions {
+    text-align: center;
+}
+
+.holdings-table .action-button {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.holdings-table .action-button.trade {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.holdings-table .action-button.trade:hover {
+    background-color: var(--primary-hover);
+}
+
+.holdings-table .action-button.close {
+    background-color: var(--danger-color);
+    color: var(--white-color);
+}
+
+.holdings-table .action-button.close:hover {
+    background-color: var(--danger-hover);
+}
+
+/* Performance chart */
+.performance-chart {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background-color: var(--white-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-md);
+}
+
+.performance-chart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-md);
+}
+
+.performance-chart-title {
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.performance-chart-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.performance-chart-action {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--light-color);
+    border-radius: var(--border-radius-sm);
+    background-color: var(--white-color);
+    color: var(--gray-color);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.performance-chart-action:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.performance-chart-action.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+/* Transaction history */
+.transaction-history {
+    background-color: var(--white-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.transaction-history-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--light-color);
+}
+
+.transaction-history-title {
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.transaction-history-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.transaction-history-action {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--light-color);
+    border-radius: var(--border-radius-sm);
+    background-color: var(--white-color);
+    color: var(--gray-color);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.transaction-history-action:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.transaction-history-action.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.transaction-history-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.transaction-history-table th,
+.transaction-history-table td {
+    padding: var(--spacing-sm);
+    text-align: right;
+    font-size: var(--font-size-sm);
+}
+
+.transaction-history-table th {
+    font-weight: 500;
+    color: var(--gray-color);
+    background-color: var(--light-color);
+}
+
+.transaction-history-table td {
+    color: var(--dark-color);
+}
+
+.transaction-history-table tr:hover {
+    background-color: var(--light-color);
+}
+
+.transaction-history-table .date {
+    text-align: left;
+}
+
+.transaction-history-table .symbol {
+    text-align: left;
+    font-weight: 500;
+}
+
+.transaction-history-table .type {
+    text-align: center;
+}
+
+.transaction-history-table .type.buy {
+    color: var(--success-color);
+}
+
+.transaction-history-table .type.sell {
+    color: var(--danger-color);
+}
+
+.transaction-history-table .quantity {
+    font-family: monospace;
+}
+
+.transaction-history-table .price {
+    font-family: monospace;
+}
+
+.transaction-history-table .total {
+    font-family: monospace;
+    font-weight: 500;
+}
+
+/* Asset allocation */
+.asset-allocation {
+    background-color: var(--white-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-md);
+}
+
+.asset-allocation-header {
+    margin-bottom: var(--spacing-md);
+}
+
+.asset-allocation-title {
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.asset-allocation-chart {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    margin-bottom: var(--spacing-md);
+}
+
+.asset-allocation-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.asset-allocation-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.asset-allocation-color {
+    width: 12px;
+    height: 12px;
+    border-radius: var(--border-radius-full);
+}
+
+.asset-allocation-label {
+    font-size: var(--font-size-sm);
+    color: var(--gray-color);
+}
+
+.asset-allocation-value {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+    .portfolio-summary,
+    .holdings,
+    .performance-chart,
+    .transaction-history,
+    .asset-allocation {
+        background-color: #2d2d2d;
+    }
+
+    .portfolio-summary-title,
+    .holdings-title,
+    .performance-chart-title,
+    .transaction-history-title,
+    .asset-allocation-title {
+        color: var(--white-color);
+    }
+
+    .portfolio-summary-item {
+        background-color: #404040;
+    }
+
+    .portfolio-summary-value {
+        color: var(--white-color);
+    }
+
+    .holdings-action,
+    .performance-chart-action,
+    .transaction-history-action {
+        background-color: #404040;
+        border-color: #404040;
+        color: var(--gray-color);
+    }
+
+    .holdings-action:hover,
+    .performance-chart-action:hover,
+    .transaction-history-action:hover {
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+    }
+
+    .holdings-action.active,
+    .performance-chart-action.active,
+    .transaction-history-action.active {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        color: var(--white-color);
+    }
+
+    .holdings-table th,
+    .transaction-history-table th {
+        background-color: #404040;
+        color: var(--gray-color);
+    }
+
+    .holdings-table td,
+    .transaction-history-table td {
+        color: var(--white-color);
+    }
+
+    .holdings-table tr:hover,
+    .transaction-history-table tr:hover {
+        background-color: #404040;
+    }
+
+    .asset-allocation-legend {
+        color: var(--white-color);
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .portfolio-summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .performance-chart,
+    .asset-allocation-chart {
+        height: 250px;
+    }
+
+    .holdings-table .actions {
+        display: flex;
+        gap: var(--spacing-xs);
+    }
+
+    .holdings-table .action-button {
+        flex: 1;
+    }
+}
+
+@media (max-width: 576px) {
+    .portfolio-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .performance-chart,
+    .asset-allocation-chart {
+        height: 200px;
+    }
+
+    .holdings-table th,
+    .holdings-table td,
+    .transaction-history-table th,
+    .transaction-history-table td {
+        padding: var(--spacing-xs);
+        font-size: var(--font-size-xs);
+    }
+
+    .holdings-table .actions {
+        flex-direction: column;
+    }
+
+    .asset-allocation-legend {
+        flex-direction: column;
+    }
+} 

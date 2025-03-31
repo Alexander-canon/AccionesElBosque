@@ -1,0 +1,119 @@
+
+Si necesitas conectarte con la terminal de comandos para ejecutar comandos, puedes hacerlo
+|acciones-elbosque/                         <-- Directorio raíz del proyect
+    │
+    ├── 📂 public/                                <-- Archivos estáticos (HTML, CSS, imágenes)
+    │   ├── index.html                           <-- Página principal (Landing Page o Dashboard)
+    │   ├── login.html                           <-- Inicio de sesión
+    │   ├── register.html                        <-- Registro de usuario
+    │   ├── trading.html                         <-- Página del módulo de trading
+    │   ├── portfolio.html                       <-- Gestión del portafolio
+    │   ├── notifications.html                   <-- Notificaciones y alertas
+    │   ├── admin.html                           <-- Panel de administración
+    │   ├── integrations.html                    <-- Integraciones con APIs externas
+    │   ├── 📂 assets/                           <-- Recursos como imágenes, fuentes, íconos
+    │   └── 📂 styles/                           <-- Archivos CSS
+    │       ├── main.css                         <-- Estilos generales
+    │       ├── login.css                        <-- Estilos para la página de inicio de sesión
+    │       └── dashboard.css                    <-- Estilos del dashboard
+    │
+    ├── 📂 src/                                   <-- Código fuente del Frontend
+    │   ├── 📂 components/                        <-- Componentes reutilizables
+    │   │   ├── navbar.js                        <-- Barra de navegación
+    │   │   ├── sidebar.js                       <-- Menú lateral
+    │   │   └── footer.js                        <-- Pie de página
+    │   ├── 📂 pages/                             <-- Scripts para cada vista/página
+    │   │   ├── login.js                         <-- Lógica de autenticación
+    │   │   ├── register.js                      <-- Lógica de registro
+    │   │   ├── dashboard.js                     <-- Control de datos en el Dashboard
+    │   │   ├── trading.js                       <-- Funcionalidad del módulo de Trading
+    │   │   ├── portfolio.js                     <-- Manejo del portafolio de inversiones
+    │   │   ├── notifications.js                 <-- Notificaciones y alertas
+    │   │   └── admin.js                         <-- Funcionalidad del Panel de Administración
+    │   ├── 📂 api/                              <-- Conexiones con APIs externas
+    │   │   ├── tradingApi.js                    <-- Conexión con Alpaca, Alpha Vantage, etc.
+    │   │   ├── paymentsApi.js                   <-- Integración con Stripe
+    │   │   ├── logsApi.js                       <-- Conexión con ElasticSearch/Splunk
+    │   │   └── securityApi.js                   <-- Implementación de OAuth, JWT, SSO
+    │   ├── 📂 utils/                            <-- Funciones y utilidades compartidas
+    │   ├── 📂 tests/                            <-- Pruebas unitarias y de integración (Frontend)
+    │   └── main.js                              <-- Archivo de inicialización del frontend
+    │
+    ├── 📂 backend/                               <-- Lógica del servidor y API REST
+    │   ├── server.js                            <-- Archivo principal del servidor (por ejemplo, con Node.js/Express)
+    │   ├── 📂 controllers/                      <-- Controladores de lógica del backend
+    │   │   ├── authController.js                <-- Manejo de autenticación
+    │   │   ├── tradingController.js             <-- Control de órdenes de trading
+    │   │   ├── portfolioController.js           <-- Gestión del portafolio
+    │   │   └── adminController.js               <-- Administración de usuarios y mercados
+    │   ├── 📂 models/                           <-- Definición de modelos de datos
+    │   │   ├── User.js                          <-- Modelo de usuario
+    │   │   ├── Order.js                         <-- Modelo de órdenes de trading
+    │   │   └── Portfolio.js                     <-- Modelo de portafolio de inversiones
+    │   ├── 📂 database/                         <-- Conexión y configuración de la base de datos
+    │   │   └── db.js                            <-- Configuración de la conexión
+
+    │   ├── 📂 middlewares/                      <-- Funciones intermedias para autenticación, validación, etc.
+    │   ├── 📂 routes/                           <-- Definición de rutas y endpoints
+    │   └── 📂 tests/                            <-- Pruebas unitarias e integración (Backend)
+    │
+    ├── 📂 config/                                <-- Configuraciones y variables de entorno
+    │   ├── config.js                            <-- Variables globales (API Keys, puertos, etc.)
+    │   ├── .env                                 <-- Archivo para variables de entorno (no subir a Git)
+    │   └── env.example                          <-- Ejemplo de configuración de entorno
+    │
+    ├── 📂 scripts/                               <-- Scripts para automatización (CI/CD, despliegue)
+    │sólo crea los archivos más importantes y necesarios para que la aplicación pueda empezar a guardar información
+    ├── 📂 docs/                                  <-- Documentación técnica y de diseño
+    │   ├── diagramas/                           <-- Diagramas UML, C4, BPMN, etc.
+    │   └── reportes/                            <-- Informes, cronogramas, WBS, etc.
+    │
+    ├── package.json                             <-- Dependencias y scripts (para Node.js)
+    ├── Dockerfile                               <-- Archivo para contenerización (opcional)
+    ├── README.md                                <-- Documentación general del proyecto
+    └── .gitignore                               <-- Archivos y carpetas a excluir en Git
+
+
+Estrucutra para crear aplicacion trading para la universidad   
+
+Solo agrega codigo en los archivos que se indican y no agregues codigo en los archivos que no se indican.
+solo agrega el codigo, no es necesario que agregues o me muestres el codigo que no se modifica
+
+Detalles a tener en cuenta:
+
+	•	Backend:
+	•	Node.js/Express: Ideal para mantener el mismo lenguaje en frontend y backend (JavaScript).
+
+    •	Frontend:
+        •	Frameworks JavaScript modernos: Angular, React o Vue.
+        •	Plantillas y componentes UI: Uso de bibliotecas como React Material, Angular Material o PrimeNG para acelerar el desarrollo y mejorar la experiencia de usuario.
+
+    •	Bases de Datos:
+	    •	SQL: MySQL,
+
+
+    •	Integración de APIs:
+	    •	APIs de trading: Alpaca, Alpha Vantage, Tradier, Polygon.io, etc.
+
+
+Recuerda que se debe seguir la guia de estilos y principios de:_
+
+https://brand.mit.edu/brand-architecture
+https://brand.mit.edu/logos-marks
+https://brand.mit.edu/colors
+https://brand.mit.edu/typography
+https://brand.mit.edu/visual-identity
+https://brand.mit.edu/guidelines
+
+Cada vez que se cree un diseño nuevo se debe seguir la guia de Diseño de Apple y Google
+Tambien es importante que se siga la guia de Diseño de Google:
+
+https://material.io/
+https://material.io/design/introduction 
+
+https://developer.apple.com/design/human-interface-guidelines/
+
+
+
+Esto No es necesario crearlo:
+    │   ├── 📂 services/                         <-- Lógica de negocio y servicios (e.g., cálculo de comisiones)

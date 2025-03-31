@@ -1,0 +1,155 @@
+/* Dashboard page */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.dashboard-card {
+    background-color: var(--white-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-md);
+}
+
+.dashboard-card.market-overview {
+    grid-column: span 8;
+}
+
+.dashboard-card.portfolio-summary {
+    grid-column: span 4;
+}
+
+.dashboard-card.watchlist {
+    grid-column: span 6;
+}
+
+.dashboard-card.recent-activity {
+    grid-column: span 6;
+}
+
+.dashboard-card.market-news {
+    grid-column: span 12;
+}
+
+/* Trading page */
+.trading-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.trading-card.symbol-info {
+    grid-column: span 12;
+}
+
+.trading-card.price-chart {
+    grid-column: span 8;
+}
+
+.trading-card.order-form {
+    grid-column: span 4;
+}
+
+.trading-card.order-book {
+    grid-column: span 6;
+}
+
+.trading-card.trade-history {
+    grid-column: span 6;
+}
+
+.trading-card.market-depth {
+    grid-column: span 12;
+}
+
+/* Portfolio page */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.portfolio-card.summary {
+    grid-column: span 12;
+}
+
+.portfolio-card.holdings {
+    grid-column: span 8;
+}
+
+.portfolio-card.performance {
+    grid-column: span 4;
+}
+
+.portfolio-card.transactions {
+    grid-column: span 12;
+}
+
+.portfolio-card.allocation {
+    grid-column: span 12;
+}
+
+/* Notifications page */
+.notifications-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.notifications-card.list {
+    grid-column: span 8;
+}
+
+.notifications-card.settings {
+    grid-column: span 4;
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+    .dashboard-card,
+    .trading-card,
+    .portfolio-card,
+    .notifications-card {
+        background-color: #2d2d2d;
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+    .dashboard-grid,
+    .trading-grid,
+    .portfolio-grid,
+    .notifications-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-card,
+    .trading-card,
+    .portfolio-card,
+    .notifications-card {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-card,
+    .trading-card,
+    .portfolio-card,
+    .notifications-card {
+        padding: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 576px) {
+    .dashboard-grid,
+    .trading-grid,
+    .portfolio-grid,
+    .notifications-grid {
+        gap: var(--spacing-sm);
+    }
+} 

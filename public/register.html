@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Acciones El Bosque</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/register.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Barra de Navegación Simplificada -->
+    <nav class="navbar navbar-simple">
+        <div class="logo">
+            <a href="index.html"><img src="assets/images/logo/logo.svg" class="logo-img" alt="Acciones El Bosque"></a>
+        </div>
+        <div class="nav-back">
+            <a href="index.html" class="back-link">
+                <span class="material-icons">arrow_back</span>
+                <span>Volver a Inicio</span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="register-container">
+        <div class="register-card">
+            <div class="register-header">
+                <img src="assets/images/logo/logo.svg" alt="Acciones El Bosque">
+                <h1>Registro de Usuario</h1>
+                <p>Crea tu cuenta para empezar a operar</p>
+            </div>
+            
+            <form id="registerForm" class="register-form">
+                <div class="form-group">
+                    <span class="material-icons">person</span>
+                    <input type="text" id="fullName" name="fullName" placeholder="Nombre Completo" required autocomplete="name">
+                </div>
+
+                <div class="form-group">
+                    <span class="material-icons">email</span>
+                    <input type="email" id="email" name="email" placeholder="Correo Institucional" 
+                           pattern=".+@unbosque\.edu\.co" 
+                           title="Debe ser un correo institucional (@unbosque.edu.co)" required autocomplete="email">
+                    <span class="form-hint">Debe ser un correo institucional (@unbosque.edu.co)</span>
+                </div>
+
+                <div class="form-group">
+                    <span class="material-icons">account_circle</span>
+                    <input type="text" id="username" name="username" placeholder="Usuario" required autocomplete="username">
+                </div>
+                
+                <div class="form-group">
+                    <span class="material-icons">lock</span>
+                    <input type="password" id="password" name="password" 
+                           placeholder="Crear contraseña" 
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <span class="material-icons">lock_outline</span>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirmar Contraseña" required autocomplete="new-password">
+                </div>
+
+                <div class="form-group">
+                    <span class="material-icons">school</span>
+                    <select id="role" name="role" required>
+                        <option value="">Selecciona un rol</option>
+                        <option value="STUDENT">Estudiante</option>
+                        <option value="TEACHER">Profesor</option>
+                        <option value="MONITOR">Monitor</option>
+                    </select>
+                </div>
+
+                <div class="terms-privacy">
+                    <label>
+                        <input type="checkbox" id="termsAccept" required>
+                        <span>Acepto los <a href="terms.html" class="terms-link">Términos y Condiciones</a> y la <a href="privacy.html" class="terms-link">Política de Privacidad</a>.</span>
+                    </label>
+                </div>
+
+                <div id="error-message" class="error-message" style="display: none;">
+                    Error en el registro
+                </div>
+
+                <div id="success-message" class="success-message" style="display: none;">
+                    Registro exitoso. Serás redirigido para iniciar sesión.
+                </div>
+
+                <button type="submit" class="btn-register" id="submitBtn">Registrarse</button>
+            </form>
+
+            <div class="register-footer">
+                <p>¿Ya tienes una cuenta? <a href="login.html">Iniciar Sesión</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Acciones El Bosque</h4>
+                <div class="footer-contact">
+                    <p>Universidad El Bosque</p>
+                    <p>Bogotá, Colombia</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><span class="material-icons">facebook</span></a>
+                    <a href="#"><span class="material-icons">twitter</span></a>
+                    <a href="#"><span class="material-icons">linkedin</span></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Trading</h4>
+                <ul>
+                    <li><a href="trading.html">Plataforma de Trading</a></li>
+                    <li><a href="portfolio.html">Mi Portafolio</a></li>
+                    <li><a href="orders.html">Órdenes</a></li>
+                    <li><a href="market.html">Mercado</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Recursos</h4>
+                <ul>
+                    <li><a href="notifications.html">Notificaciones</a></li>
+                    <li><a href="learning.html">Educación</a></li>
+                    <li><a href="support.html">Soporte</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="terms.html">Términos de Uso</a></li>
+                    <li><a href="privacy.html">Privacidad</a></li>
+                    <li><a href="disclaimer.html">Disclaimer</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Acciones El Bosque. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Ocultar mensajes previos
+            document.getElementById('error-message').style.display = 'none';
+            document.getElementById('success-message').style.display = 'none';
+            
+            // Desactivar botón para prevenir múltiples envíos
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Procesando...';
+            
+            // Validar campos requeridos
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const confirmPassword = document.getElementById('confirmPassword').value.trim();
+            const role = document.getElementById('role').value;
+            const termsAccept = document.getElementById('termsAccept').checked;
+            
+            if (!fullName || !email || !username || !password || !confirmPassword || !role) {
+                document.getElementById('error-message').textContent = 'Todos los campos son obligatorios';
+                document.getElementById('error-message').style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Registrarse';
+                return;
+            }
+            
+            if (!termsAccept) {
+                document.getElementById('error-message').textContent = 'Debes aceptar los términos y condiciones';
+                document.getElementById('error-message').style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Registrarse';
+                return;
+            }
+            
+            // Validar contraseñas
+            if (password !== confirmPassword) {
+                document.getElementById('error-message').textContent = 'Las contraseñas no coinciden';
+                document.getElementById('error-message').style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Registrarse';
+                return;
+            }
+
+            // Validar correo institucional
+            if (!email.endsWith('@unbosque.edu.co')) {
+                document.getElementById('error-message').textContent = 'Debe usar un correo institucional (@unbosque.edu.co)';
+                document.getElementById('error-message').style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Registrarse';
+                return;
+            }
+
+            // Preparar datos para enviar al servidor
+            const userData = {
+                fullName: fullName,
+                email: email,
+                username: username,
+                password: password,
+                role: role
+            };
+
+            // Modo fallback (localStorage) si el servidor no está disponible
+            function registerFallback(userData) {
+                console.log('Usando modo fallback para registro (localStorage)');
+                
+                // Simular una base de datos local con localStorage
+                let users = JSON.parse(localStorage.getItem('users')) || [];
+                
+                // Verificar si el usuario o email ya existen
+                const userExists = users.some(user => 
+                    user.username === userData.username || 
+                    user.email === userData.email
+                );
+                
+                if (userExists) {
+                    document.getElementById('error-message').textContent = 'El usuario o correo ya existe';
+                    document.getElementById('error-message').style.display = 'block';
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Registrarse';
+                    return false;
+                }
+                
+                // Asignar ID y guardar usuario
+                userData.id = users.length + 1;
+                userData.createdAt = new Date().toISOString();
+                userData.status = 'ACTIVE';
+                
+                users.push(userData);
+                localStorage.setItem('users', JSON.stringify(users));
+                
+                // Mostrar mensaje de éxito
+                document.getElementById('success-message').style.display = 'block';
+                document.getElementById('registerForm').reset();
+                
+                // Redirigir después de un breve retraso
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 2000);
+                
+                return true;
+            }
+
+            // Usar directamente el modo fallback para garantizar el funcionamiento
+            registerFallback(userData);
+            
+            /* Descomentar esta sección si deseas intentar primero con el backend
+            // Intentar registrar en el backend
+            fetch('/api/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.text().then(text => {
+                        try {
+                            // Intentar parsear como JSON
+                            return JSON.parse(text);
+                        } catch (e) {
+                            // Si no es JSON válido, crear objeto de error genérico
+                            throw new Error('Error en el registro: respuesta no válida');
+                        }
+                    }).then(data => {
+                        throw new Error(data.message || 'Error en el registro');
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Registro exitoso
+                document.getElementById('success-message').style.display = 'block';
+                document.getElementById('registerForm').reset();
+                
+                // Redirigir después de un breve retraso
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 2000);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                
+                // Si hay un error de conexión con el servidor, usar el modo fallback
+                if (error.message.includes('Failed to fetch') || 
+                    error.message.includes('NetworkError') ||
+                    error.message.includes('JSON') ||
+                    error.message.includes('Unexpected end') ||
+                    error.message.includes('respuesta no válida')) {
+                    
+                    if (registerFallback(userData)) {
+                        document.getElementById('success-message').style.display = 'block';
+                        document.getElementById('registerForm').reset();
+                        
+                        // Redirigir después de un breve retraso
+                        setTimeout(() => {
+                            window.location.href = 'login.html';
+                        }, 2000);
+                        return;
+                    }
+                } else {
+                    document.getElementById('error-message').textContent = error.message || 'Error al registrar usuario';
+                    document.getElementById('error-message').style.display = 'block';
+                }
+                
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Registrarse';
+            });
+            */
+        });
+
+        // Validación en tiempo real de contraseñas
+        document.getElementById('confirmPassword').addEventListener('input', function() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = this.value;
+            
+            if (password !== confirmPassword) {
+                this.setCustomValidity('Las contraseñas no coinciden');
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+        
+        // Añadir hover effect en dispositivos táctiles
+        document.querySelectorAll('button, a, select').forEach(element => {
+            element.addEventListener('touchstart', function() {
+                // Añadir clase hover para simular efecto en dispositivos táctiles
+                this.classList.add('hover-effect');
+            });
+            
+            element.addEventListener('touchend', function() {
+                // Remover clase hover
+                this.classList.remove('hover-effect');
+            });
+        });
+    </script>
+    <script src="js/utils/auth.js"></script>
+</body>
+</html>

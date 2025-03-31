@@ -1,0 +1,39 @@
+Recuerda que se debe seguir la guia de estilos y principios de:_
+
+
+
+https://brand.mit.edu/
+https://brand.mit.edu/brand-architecture
+https://brand.mit.edu/logos-marks
+https://brand.mit.edu/colors
+https://brand.mit.edu/typography
+https://brand.mit.edu/visual-identity
+https://brand.mit.edu/guidelines
+
+Cada vez que se cree un diseño nuevo se debe seguir la guia de Diseño de Apple y Google
+Tambien es importante que se siga la guia de Diseño de Google:
+
+https://material.io/
+https://material.io/design/introduction 
+
+https://developer.apple.com/design/human-interface-guidelines/
+
+Solo usar y combinar los colores de la guia de colores de MIT:
+
+
+Color Name	Web	Print	Swatch
+MIT Red	RGB: 117/0/20
+HEX: #750014copy hex code	CMYK: 30/100/95/43
+PMS: 202 C and 7427 U*	
+Silver Gray	RGB: 139/149/158
+HEX: #8b959ecopy hex code	CMYK: 0/0/0/45
+PMS: 7543	
+Bright Red	RGB: 255/20/35
+HEX: #ff1423copy hex code	CMYK: 0/90/85/0
+PMS: Red 032	
+Black	RGB: 0/0/0
+HEX: #000000copy hex code	CMYK: 0/0/0/100
+PMS: Black	
+White	RGB: 255/255/255
+HEX: #ffffffcopy hex code	CMYK: 0/0/0/0
+PMS: N/A
