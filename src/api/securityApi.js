@@ -1,8 +1,8 @@
-// Security API Module
+// Módulo de API de Seguridad
 export const securityApi = {
-    // Authentication
+    // Autenticación
     async login(credentials) {
-        // TODO: Implement login functionality
+        // TODO: Implementar funcionalidad de inicio de sesión
         return {
             success: true,
             token: '',
@@ -11,37 +11,37 @@ export const securityApi = {
     },
 
     async logout() {
-        // TODO: Implement logout functionality
+        // TODO: Implementar funcionalidad de cierre de sesión
         return { success: true };
     },
 
     async refreshToken() {
-        // TODO: Implement token refresh
+        // TODO: Implementar actualización de token
         return {
             success: true,
             token: ''
         };
     },
 
-    // User Management
+    // Gestión de Usuario
     async getCurrentUser() {
-        // TODO: Implement current user fetching
+        // TODO: Implementar obtención del usuario actual
         return {};
     },
 
     async updateUserProfile(data) {
-        // TODO: Implement profile update
+        // TODO: Implementar actualización de perfil
         return { success: true };
     },
 
     async changePassword(oldPassword, newPassword) {
-        // TODO: Implement password change
+        // TODO: Implementar cambio de contraseña
         return { success: true };
     },
 
-    // Security Settings
+    // Configuración de Seguridad
     async getSecuritySettings() {
-        // TODO: Implement security settings fetching
+        // TODO: Implementar obtención de configuración de seguridad
         return {
             twoFactorEnabled: false,
             lastLogin: null,
@@ -50,34 +50,34 @@ export const securityApi = {
     },
 
     async updateSecuritySettings(settings) {
-        // TODO: Implement security settings update
+        // TODO: Implementar actualización de configuración de seguridad
         return { success: true };
     },
 
-    // Session Management
+    // Gestión de Sesiones
     async getActiveSessions() {
-        // TODO: Implement active sessions fetching
+        // TODO: Implementar obtención de sesiones activas
         return [];
     },
 
     async terminateSession(sessionId) {
-        // TODO: Implement session termination
+        // TODO: Implementar terminación de sesión
         return { success: true };
     },
 
-    // OAuth Integration
+    // Integración OAuth
     async getOAuthProviders() {
-        // TODO: Implement OAuth providers fetching
+        // TODO: Implementar obtención de proveedores OAuth
         return [];
     },
 
     async connectOAuthProvider(provider) {
-        // TODO: Implement OAuth provider connection
+        // TODO: Implementar conexión con proveedor OAuth
         return { success: true };
     },
 
     async disconnectOAuthProvider(provider) {
-        // TODO: Implement OAuth provider disconnection
+        // TODO: Implementar desconexión de proveedor OAuth
         return { success: true };
     }
 }; 

@@ -1,8 +1,8 @@
-// Payments API Module
+// Módulo de API de Pagos
 export const paymentsApi = {
-    // Account Management
+    // Gestión de Cuenta
     async getAccountBalance() {
-        // TODO: Implement account balance fetching
+        // TODO: Implementar obtención del saldo de la cuenta
         return {
             available: 0,
             pending: 0,
@@ -11,13 +11,13 @@ export const paymentsApi = {
     },
 
     async getTransactionHistory() {
-        // TODO: Implement transaction history fetching
+        // TODO: Implementar obtención del historial de transacciones
         return [];
     },
 
-    // Payment Operations
+    // Operaciones de Pago
     async deposit(amount, method) {
-        // TODO: Implement deposit functionality
+        // TODO: Implementar funcionalidad de depósito
         return {
             success: true,
             transactionId: ''
@@ -25,21 +25,21 @@ export const paymentsApi = {
     },
 
     async withdraw(amount, method) {
-        // TODO: Implement withdrawal functionality
+        // TODO: Implementar funcionalidad de retiro
         return {
             success: true,
             transactionId: ''
         };
     },
 
-    // Payment Methods
+    // Métodos de Pago
     async getPaymentMethods() {
-        // TODO: Implement payment methods fetching
+        // TODO: Implementar obtención de métodos de pago
         return [];
     },
 
     async addPaymentMethod(method) {
-        // TODO: Implement adding payment method
+        // TODO: Implementar adición de método de pago
         return {
             success: true,
             methodId: ''
@@ -47,18 +47,18 @@ export const paymentsApi = {
     },
 
     async removePaymentMethod(methodId) {
-        // TODO: Implement removing payment method
+        // TODO: Implementar eliminación de método de pago
         return { success: true };
     },
 
-    // Billing
+    // Facturación
     async getBillingHistory() {
-        // TODO: Implement billing history fetching
+        // TODO: Implementar obtención del historial de facturación
         return [];
     },
 
     async getInvoices() {
-        // TODO: Implement invoices fetching
+        // TODO: Implementar obtención de facturas
         return [];
     }
 }; 

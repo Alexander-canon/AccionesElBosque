@@ -1,8 +1,8 @@
-// Trading API Module
+// Módulo de API de Trading
 export const tradingApi = {
-    // Market Data
+    // Datos de Mercado
     async getMarketOverview() {
-        // TODO: Implement market overview data fetching
+        // TODO: Implementar obtención de datos generales del mercado
         return {
             indices: [],
             trends: []
@@ -28,9 +28,9 @@ export const tradingApi = {
         return [];
     },
 
-    // Portfolio Management
+    // Gestión de Portafolio
     async getPortfolio() {
-        // TODO: Implement portfolio data fetching
+        // TODO: Implementar obtención de datos del portafolio
         return {
             totalValue: 0,
             dailyChange: 0,
@@ -77,9 +77,9 @@ export const tradingApi = {
         };
     },
 
-    // Watchlist Management
+    // Gestión de Lista de Seguimiento
     async getWatchlist() {
-        // TODO: Implement watchlist fetching
+        // TODO: Implementar obtención de lista de seguimiento
         return [];
     },
 
@@ -99,9 +99,9 @@ export const tradingApi = {
         return { success: true };
     },
 
-    // Transaction History
+    // Historial de Transacciones
     async getTransactionHistory() {
-        // TODO: Implement transaction history fetching
+        // TODO: Implementar obtención de historial de transacciones
         return [];
     }
 }; 

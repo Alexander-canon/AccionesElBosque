@@ -1,4 +1,4 @@
-// API endpoints
+// Puntos finales de la API
 export const API_ENDPOINTS = {
     BASE_URL: 'https://api.tradingapp.com/v1',
     AUTH: {
@@ -36,7 +36,7 @@ export const API_ENDPOINTS = {
     }
 };
 
-// Time intervals
+// Intervalos de tiempo
 export const TIME_INTERVALS = {
     ONE_MINUTE: '1m',
     FIVE_MINUTES: '5m',
@@ -133,10 +133,10 @@ export const SUCCESS_MESSAGES = {
     PROFILE_UPDATED: 'Profile updated successfully.'
 };
 
-// Default settings
+// Configuración predeterminada
 export const DEFAULT_SETTINGS = {
     THEME: 'light',
-    LANGUAGE: 'en',
+    LANGUAGE: 'es',
     TIMEZONE: 'UTC',
     NOTIFICATIONS: {
         EMAIL: true,

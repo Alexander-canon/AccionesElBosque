@@ -1,4 +1,4 @@
-// API Configuration
+// Configuración de la API
 export const API_CONFIG = {
     BASE_URL: process.env.API_BASE_URL || 'http://localhost:3000/api',
     VERSION: 'v1',
@@ -8,9 +8,9 @@ export const API_CONFIG = {
     }
 };
 
-// API Endpoints
+// Puntos finales de la API
 export const ENDPOINTS = {
-    // Authentication
+    // Autenticación
     AUTH: {
         LOGIN: '/auth/login',
         REGISTER: '/auth/register',
@@ -20,7 +20,7 @@ export const ENDPOINTS = {
         RESET_PASSWORD: '/auth/reset-password'
     },
     
-    // User
+    // Usuario
     USER: {
         PROFILE: '/user/profile',
         UPDATE_PROFILE: '/user/profile/update',
@@ -37,7 +37,7 @@ export const ENDPOINTS = {
         SYMBOLS: '/trading/symbols'
     },
     
-    // Notifications
+    // Notificaciones
     NOTIFICATIONS: {
         LIST: '/notifications',
         MARK_READ: '/notifications/mark-read',
@@ -45,7 +45,7 @@ export const ENDPOINTS = {
         DELETE: '/notifications/delete'
     },
     
-    // Admin
+    // Administración
     ADMIN: {
         USERS: '/admin/users',
         ORDERS: '/admin/orders',
