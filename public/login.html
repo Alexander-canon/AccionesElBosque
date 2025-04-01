@@ -76,7 +76,7 @@
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Pie de Página -->
     <footer class="main-footer">
         <div class="footer-content">
             <div class="footer-section">
@@ -155,7 +155,7 @@
                 // Buscar usuarios registrados localmente
                 const users = JSON.parse(localStorage.getItem('users')) || [];
                 
-                // Credenciales hardcodeadas para demostración
+                // Credenciales predefinidas para demostración
                 const hardcodedUsers = [
                     { 
                         username: 'admin', 
@@ -199,13 +199,13 @@
                     }
                 ];
                 
-                // Combinar los usuarios hardcodeados con los registrados localmente
+                // Combinar los usuarios predefinidos con los registrados localmente
                 const allUsers = [...hardcodedUsers, ...users];
                 
                 // Verificar si es un correo electrónico
                 const isEmail = usernameOrEmail.includes('@');
                 
-                // Buscar usuario por username o email
+                // Buscar usuario por nombre de usuario o correo electrónico
                 const user = allUsers.find(user => 
                     (isEmail ? (user.email === usernameOrEmail) : (user.username === usernameOrEmail)) && 
                     user.password === password

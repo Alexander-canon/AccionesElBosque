@@ -10,7 +10,7 @@ export const tradingApi = {
     },
 
     async getSymbolInfo(symbol) {
-        // TODO: Implement symbol info fetching
+        // TODO: Implementar obtención de información del símbolo
         return {
             symbol,
             companyName: '',
@@ -24,7 +24,7 @@ export const tradingApi = {
     },
 
     async getPriceHistory(symbol) {
-        // TODO: Implement price history fetching
+        // TODO: Implementar obtención del historial de precios
         return [];
     },
 
@@ -46,9 +46,9 @@ export const tradingApi = {
         };
     },
 
-    // Trading Operations
+    // Operaciones de Trading
     async placeOrder(order) {
-        // TODO: Implement order placement
+        // TODO: Implementar colocación de orden
         return {
             success: true,
             orderId: ''
@@ -56,7 +56,7 @@ export const tradingApi = {
     },
 
     async getOrderBook(symbol) {
-        // TODO: Implement order book fetching
+        // TODO: Implementar obtención del libro de órdenes
         return {
             asks: [],
             bids: [],
@@ -65,12 +65,12 @@ export const tradingApi = {
     },
 
     async getTradeHistory(symbol) {
-        // TODO: Implement trade history fetching
+        // TODO: Implementar obtención del historial de operaciones
         return [];
     },
 
     async getMarketDepth(symbol) {
-        // TODO: Implement market depth fetching
+        // TODO: Implementar obtención de la profundidad del mercado
         return {
             asks: [],
             bids: []
@@ -84,24 +84,24 @@ export const tradingApi = {
     },
 
     async addToWatchlist(symbol) {
-        // TODO: Implement adding to watchlist
+        // TODO: Implementar adición a la lista de seguimiento
         return { success: true };
     },
 
     async removeFromWatchlist(symbol) {
-        // TODO: Implement removing from watchlist
+        // TODO: Implementar eliminación de la lista de seguimiento
         return { success: true };
     },
 
-    // Position Management
+    // Gestión de Posiciones
     async closePosition(symbol) {
-        // TODO: Implement position closing
+        // TODO: Implementar cierre de posición
         return { success: true };
     },
 
     // Historial de Transacciones
     async getTransactionHistory() {
-        // TODO: Implementar obtención de historial de transacciones
+        // TODO: Implementar obtención del historial de transacciones
         return [];
     }
 }; 

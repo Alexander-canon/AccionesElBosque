@@ -29,17 +29,13 @@
             <li><a href="admin.html">Day Trading</a></li>
             <li><a href="integrations.html">Integraciones</a></li>
             <li><a href="pruebas-diseno.html">Configuración</a></li> 
-            
-            
-            
-            
         </ul>
         <div class="user-menu" id="userMenu">
             <!-- Se actualizará dinámicamente -->
         </div>
     </nav>
 
-    <!-- Hero Section con Gráfico de Trading como Fondo -->
+    <!-- Sección Hero con Gráfico de Trading como Fondo -->
     <section class="hero-section">
         <div class="hero-background"></div>
         <div class="hero-overlay">
@@ -118,7 +114,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Pie de Página footer -->
     <footer class="main-footer">
         <div class="footer-content">
             <div class="footer-section">
@@ -184,13 +180,13 @@
                 `;
             }
             
-            // Mobile menu toggle
+            // Alternar menú móvil
             const mobileToggle = document.getElementById('mobileToggle');
             const navLinks = document.getElementById('navLinks');
             
             mobileToggle.addEventListener('click', function() {
                 navLinks.classList.toggle('active');
-                // Change icon based on menu state
+                // Cambiar ícono según el estado del menú
                 const icon = this.querySelector('.material-icons');
                 if (navLinks.classList.contains('active')) {
                     icon.textContent = 'close';
@@ -199,7 +195,7 @@
                 }
             });
             
-            // Close mobile menu when a link is clicked
+            // Cerrar menú móvil cuando se hace clic en un enlace
             document.querySelectorAll('.nav-links a').forEach(link => {
                 link.addEventListener('click', () => {
                     navLinks.classList.remove('active');

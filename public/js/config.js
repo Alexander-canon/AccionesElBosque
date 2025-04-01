@@ -54,7 +54,7 @@ export const ENDPOINTS = {
     }
 };
 
-// API Response Codes
+// Códigos de respuesta de la API
 export const API_CODES = {
     SUCCESS: 200,
     CREATED: 201,
@@ -65,7 +65,7 @@ export const API_CODES = {
     SERVER_ERROR: 500
 };
 
-// API Error Messages
+// Mensajes de error de la API
 export const API_MESSAGES = {
     [API_CODES.BAD_REQUEST]: 'Solicitud incorrecta',
     [API_CODES.UNAUTHORIZED]: 'No autorizado',
@@ -74,7 +74,7 @@ export const API_MESSAGES = {
     [API_CODES.SERVER_ERROR]: 'Error del servidor'
 };
 
-// API Request Interceptor
+// Interceptor de solicitudes de la API
 export const requestInterceptor = (config) => {
     const token = localStorage.getItem('userToken');
     if (token) {
@@ -83,15 +83,15 @@ export const requestInterceptor = (config) => {
     return config;
 };
 
-// API Response Interceptor
+// Interceptor de respuestas de la API
 export const responseInterceptor = (response) => {
     return response.data;
 };
 
-// API Error Interceptor
+// Interceptor de errores de la API
 export const errorInterceptor = (error) => {
     if (error.response?.status === API_CODES.UNAUTHORIZED) {
-        // Handle token expiration
+        // Manejar expiración del token
         localStorage.removeItem('userToken');
         window.location.href = '/login.html';
     }

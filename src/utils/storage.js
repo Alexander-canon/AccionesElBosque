@@ -4,60 +4,82 @@ import { STORAGE_KEYS } from './constants';
 // Storage class
 class Storage {
     constructor() {
-        this.storage = window.localStorage;
+        // Verificar si el almacenamiento local está disponible
+        this.isAvailable = this.checkAvailability();
     }
 
-    // Set item
-    set(key, value) {
+    // Verificar disponibilidad del almacenamiento local
+    checkAvailability() {
         try {
-            const serializedValue = JSON.stringify(value);
-            this.storage.setItem(key, serializedValue);
+            const storage = window.localStorage;
+            const x = '__storage_test__';
+            storage.setItem(x, x);
+            storage.removeItem(x);
             return true;
-        } catch (error) {
-            console.error('Error saving to storage:', error);
+        } catch(e) {
             return false;
         }
     }
 
-    // Get item
+    // Obtener elemento del almacenamiento
     get(key) {
+        if (!this.isAvailable) return null;
         try {
-            const serializedValue = this.storage.getItem(key);
-            return serializedValue ? JSON.parse(serializedValue) : null;
-        } catch (error) {
-            console.error('Error reading from storage:', error);
+            const item = localStorage.getItem(key);
+            return item ? JSON.parse(item) : null;
+        } catch (e) {
+            console.error('Error al obtener elemento del almacenamiento:', e);
             return null;
         }
     }
 
-    // Remove item
-    remove(key) {
+    // Guardar elemento en el almacenamiento
+    set(key, value) {
+        if (!this.isAvailable) return false;
         try {
-            this.storage.removeItem(key);
+            localStorage.setItem(key, JSON.stringify(value));
             return true;
-        } catch (error) {
-            console.error('Error removing from storage:', error);
+        } catch (e) {
+            console.error('Error al guardar elemento en el almacenamiento:', e);
             return false;
         }
     }
 
-    // Clear all items
-    clear() {
+    // Eliminar elemento del almacenamiento
+    remove(key) {
+        if (!this.isAvailable) return false;
         try {
-            this.storage.clear();
+            localStorage.removeItem(key);
             return true;
-        } catch (error) {
-            console.error('Error clearing storage:', error);
+        } catch (e) {
+            console.error('Error al eliminar elemento del almacenamiento:', e);
             return false;
         }
+    }
+
+    // Limpiar todo el almacenamiento
+    clear() {
+        if (!this.isAvailable) return false;
+        try {
+            localStorage.clear();
+            return true;
+        } catch (e) {
+            console.error('Error al limpiar el almacenamiento:', e);
+            return false;
+        }
+    }
+
+    // Verificar si existe un elemento
+    has(key) {
+        return this.get(key) !== null;
     }
 
     // Get all items
     getAll() {
         try {
             const items = {};
-            for (let i = 0; i < this.storage.length; i++) {
-                const key = this.storage.key(i);
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
                 items[key] = this.get(key);
             }
             return items;
@@ -67,18 +89,13 @@ class Storage {
         }
     }
 
-    // Check if item exists
-    has(key) {
-        return this.get(key) !== null;
-    }
-
     // Get item size
     getSize() {
         try {
             let size = 0;
-            for (let i = 0; i < this.storage.length; i++) {
-                const key = this.storage.key(i);
-                const value = this.storage.getItem(key);
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                const value = localStorage.getItem(key);
                 size += key.length + value.length;
             }
             return size;
@@ -92,8 +109,8 @@ class Storage {
     getRemainingSpace() {
         try {
             const testKey = '__storage_test__';
-            this.storage.setItem(testKey, '');
-            this.storage.removeItem(testKey);
+            localStorage.setItem(testKey, '');
+            localStorage.removeItem(testKey);
             return true;
         } catch (error) {
             return false;

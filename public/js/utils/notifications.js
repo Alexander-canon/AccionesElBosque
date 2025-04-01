@@ -1,8 +1,8 @@
 // Notifications Page JavaScript
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize tabs
-    const tabs = document.querySelectorAll('.tab-btn');
+    // Inicializar pestañas
+    const tabs = document.querySelectorAll('.tab-button');
     const notificationsList = document.querySelector('.notifications-list');
 
     // Sample notifications data (in a real app, this would come from an API)
@@ -43,13 +43,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Tab click handler
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
-            // Remove active class from all tabs
+            const category = tab.dataset.category;
+            renderNotifications(category);
+            
+            // Actualizar estado activo de las pestañas
             tabs.forEach(t => t.classList.remove('active'));
-            // Add active class to clicked tab
             tab.classList.add('active');
-            // Update notifications list
-            const type = tab.dataset.tab;
-            renderNotifications(type);
         });
     });
 
@@ -94,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return div;
     }
 
-    // Mark all as read button handler
+    // Botón para marcar como leídas
     const markReadBtn = document.querySelector('.btn-mark-read');
     markReadBtn.addEventListener('click', () => {
         const unreadNotifications = document.querySelectorAll('.notification-item.unread');
@@ -102,20 +101,20 @@ document.addEventListener('DOMContentLoaded', () => {
             notification.classList.remove('unread');
         });
         
-        // Update notifications data
+        // Actualizar datos de notificaciones
         notifications.all.forEach(notification => notification.unread = false);
         notifications.trading.forEach(notification => notification.unread = false);
         notifications.alerts.forEach(notification => notification.unread = false);
         notifications.system.forEach(notification => notification.unread = false);
     });
 
-    // Filter button handler (to be implemented with a modal or dropdown)
+    // Manejador del botón de filtro (a implementar con un modal o menú desplegable)
     const filterBtn = document.querySelector('.btn-filter');
     filterBtn.addEventListener('click', () => {
-        // TODO: Implement filter functionality
-        console.log('Filter button clicked');
+        // TODO: Implementar funcionalidad de filtro
+        console.log('Botón de filtro presionado');
     });
 
-    // Initial render
+    // Renderizado inicial
     renderNotifications('all');
 }); 

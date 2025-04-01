@@ -1,10 +1,10 @@
-// Main application initialization
+// Inicialización principal de la aplicación
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize components
+    // Inicializar componentes
     initializeNavbar();
     initializeFooter();
     
-    // Initialize page-specific functionality based on current page
+    // Inicializar funcionalidad específica de la página según la página actual
     const currentPage = window.location.pathname.split('/').pop();
     initializePage(currentPage);
 });

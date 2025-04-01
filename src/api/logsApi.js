@@ -1,30 +1,30 @@
-// Logs API Module
+// Módulo de API de Registros
 export const logsApi = {
-    // System Logs
+    // Registros del Sistema
     async getSystemLogs(filters = {}) {
-        // TODO: Implement system logs fetching
+        // TODO: Implementar obtención de registros del sistema
         return [];
     },
 
     async getErrorLogs(filters = {}) {
-        // TODO: Implement error logs fetching
+        // TODO: Implementar obtención de registros de errores
         return [];
     },
 
-    // User Activity Logs
+    // Registros de Actividad del Usuario
     async getUserActivityLogs(userId, filters = {}) {
-        // TODO: Implement user activity logs fetching
+        // TODO: Implementar obtención de registros de actividad del usuario
         return [];
     },
 
     async getTradingLogs(filters = {}) {
-        // TODO: Implement trading logs fetching
+        // TODO: Implementar obtención de registros de trading
         return [];
     },
 
-    // Performance Logs
+    // Registros de Rendimiento
     async getPerformanceMetrics(filters = {}) {
-        // TODO: Implement performance metrics fetching
+        // TODO: Implementar obtención de métricas de rendimiento
         return {
             cpu: 0,
             memory: 0,
@@ -33,20 +33,20 @@ export const logsApi = {
         };
     },
 
-    // Audit Logs
+    // Registros de Auditoría
     async getAuditLogs(filters = {}) {
-        // TODO: Implement audit logs fetching
+        // TODO: Implementar obtención de registros de auditoría
         return [];
     },
 
-    // Log Management
+    // Gestión de Registros
     async clearLogs(type, filters = {}) {
-        // TODO: Implement log clearing
+        // TODO: Implementar limpieza de registros
         return { success: true };
     },
 
     async exportLogs(type, format, filters = {}) {
-        // TODO: Implement log exporting
+        // TODO: Implementar exportación de registros
         return {
             success: true,
             url: ''

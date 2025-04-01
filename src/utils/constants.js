@@ -49,7 +49,7 @@ export const TIME_INTERVALS = {
     ONE_MONTH: '1M'
 };
 
-// Order types
+// Tipos de órdenes
 export const ORDER_TYPES = {
     MARKET: 'market',
     LIMIT: 'limit',
@@ -57,13 +57,13 @@ export const ORDER_TYPES = {
     STOP_LIMIT: 'stop_limit'
 };
 
-// Order sides
+// Lados de la orden
 export const ORDER_SIDES = {
     BUY: 'buy',
     SELL: 'sell'
 };
 
-// Order status
+// Estado de la orden
 export const ORDER_STATUS = {
     PENDING: 'pending',
     FILLED: 'filled',
@@ -72,7 +72,7 @@ export const ORDER_STATUS = {
     REJECTED: 'rejected'
 };
 
-// Notification types
+// Tipos de notificación
 export const NOTIFICATION_TYPES = {
     ORDER: 'order',
     PRICE_ALERT: 'price_alert',
@@ -80,7 +80,7 @@ export const NOTIFICATION_TYPES = {
     NEWS: 'news'
 };
 
-// Chart types
+// Tipos de gráficos
 export const CHART_TYPES = {
     CANDLESTICK: 'candlestick',
     LINE: 'line',
@@ -88,7 +88,7 @@ export const CHART_TYPES = {
     AREA: 'area'
 };
 
-// Theme colors
+// Colores del tema
 export const THEME_COLORS = {
     PRIMARY: '#2196F3',
     SECONDARY: '#FFC107',
@@ -100,7 +100,7 @@ export const THEME_COLORS = {
     DARK: '#212121'
 };
 
-// Local storage keys
+// Claves de almacenamiento local
 export const STORAGE_KEYS = {
     TOKEN: 'auth_token',
     USER: 'user_data',
@@ -108,29 +108,29 @@ export const STORAGE_KEYS = {
     THEME: 'theme_preference'
 };
 
-// Error messages
+// Mensajes de error
 export const ERROR_MESSAGES = {
-    NETWORK_ERROR: 'Network error occurred. Please check your connection.',
-    UNAUTHORIZED: 'Unauthorized access. Please login again.',
-    FORBIDDEN: 'Access forbidden. You do not have permission.',
-    NOT_FOUND: 'Resource not found.',
-    SERVER_ERROR: 'Server error occurred. Please try again later.',
-    VALIDATION_ERROR: 'Please check your input and try again.',
-    INSUFFICIENT_FUNDS: 'Insufficient funds for this transaction.',
-    ORDER_REJECTED: 'Order was rejected. Please try again.',
-    SESSION_EXPIRED: 'Your session has expired. Please login again.'
+    NETWORK_ERROR: 'Error de red. Por favor, verifica tu conexión.',
+    UNAUTHORIZED: 'Acceso no autorizado. Por favor, inicia sesión nuevamente.',
+    FORBIDDEN: 'Acceso prohibido. No tienes permiso.',
+    NOT_FOUND: 'Recurso no encontrado.',
+    SERVER_ERROR: 'Error del servidor. Por favor, intenta nuevamente más tarde.',
+    VALIDATION_ERROR: 'Por favor, verifica tu entrada e intenta nuevamente.',
+    INSUFFICIENT_FUNDS: 'Fondos insuficientes para esta transacción.',
+    ORDER_REJECTED: 'La orden fue rechazada. Por favor, intenta nuevamente.',
+    SESSION_EXPIRED: 'Tu sesión ha expirado. Por favor, inicia sesión nuevamente.'
 };
 
-// Success messages
+// Mensajes de éxito
 export const SUCCESS_MESSAGES = {
-    LOGIN: 'Successfully logged in.',
-    LOGOUT: 'Successfully logged out.',
-    ORDER_PLACED: 'Order placed successfully.',
-    ORDER_CANCELLED: 'Order cancelled successfully.',
-    WATCHLIST_ADDED: 'Symbol added to watchlist.',
-    WATCHLIST_REMOVED: 'Symbol removed from watchlist.',
-    SETTINGS_UPDATED: 'Settings updated successfully.',
-    PROFILE_UPDATED: 'Profile updated successfully.'
+    LOGIN: 'Inicio de sesión exitoso.',
+    LOGOUT: 'Cierre de sesión exitoso.',
+    ORDER_PLACED: 'Orden colocada exitosamente.',
+    ORDER_CANCELLED: 'Orden cancelada exitosamente.',
+    WATCHLIST_ADDED: 'Símbolo agregado a la lista de seguimiento.',
+    WATCHLIST_REMOVED: 'Símbolo eliminado de la lista de seguimiento.',
+    SETTINGS_UPDATED: 'Configuración actualizada exitosamente.',
+    PROFILE_UPDATED: 'Perfil actualizado exitosamente.'
 };
 
 // Configuración predeterminada
