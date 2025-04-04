@@ -18,22 +18,28 @@
         <div class="logo">
             <a href="index.html"><img src="assets/images/logo/logo.svg" class="logo-img" alt="Acciones El Bosque"></a>
         </div>
-        <button class="mobile-toggle" id="mobileToggle">
+        <div class="nav-links">
+            <a href="login.html" class="nav-link">Ingresar</a>
+            <a href="register.html" class="nav-link btn-primary">Registrarse</a>
+        </div>
+        <button class="mobile-menu-toggle">
             <span class="material-icons">menu</span>
         </button>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="index.html" class="active">Inicio</a></li>
-            <li><a href="trading.html">Trading</a></li>
-            <li><a href="portfolio.html">Portafolio</a></li>
-            <li><a href="notifications.html">Notificaciones</a></li>
-            <li><a href="admin.html">Day Trading</a></li>
-            <li><a href="integrations.html">Integraciones</a></li>
-            <li><a href="pruebas-diseno.html">Configuración</a></li> 
-        </ul>
-        <div class="user-menu" id="userMenu">
-            <!-- Se actualizará dinámicamente -->
-        </div>
     </nav>
+
+    <!-- Menú Móvil -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <img src="assets/images/logo/logo.svg" alt="Acciones El Bosque" class="mobile-logo">
+            <button class="close-menu">
+                <span class="material-icons">close</span>
+            </button>
+        </div>
+        <div class="mobile-menu-links">
+            <a href="login.html" class="mobile-link">Ingresar</a>
+            <a href="register.html" class="mobile-link btn-primary">Registrarse</a>
+        </div>
+    </div>
 
     <!-- Sección Hero con Gráfico de Trading como Fondo -->
     <section class="hero-section">
@@ -209,6 +215,26 @@
             window.location.reload();
         }
         
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const closeMenu = document.querySelector('.close-menu');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
     </script>
 </body>
 </html>
