@@ -1,6 +1,8 @@
 Recuerda que se debe seguir la guia de estilos y principios de:_
 
-
+líneas modificadas en database
+ password: '1234', // Configura tu contraseña
+ multipleStatements: true, // ✅ esto permite ejecutar varias sentencias
 
 https://brand.mit.edu/
 https://brand.mit.edu/brand-architecture

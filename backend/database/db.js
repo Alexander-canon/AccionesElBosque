@@ -5,7 +5,8 @@ const path = require('path');
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '', // Configura tu contraseña
+    password: '1234', // Configura tu contraseña
+ multipleStatements: true, // ✅ esto permite ejecutar varias sentencias
     database: 'acciones_elbosque'
 });
 
