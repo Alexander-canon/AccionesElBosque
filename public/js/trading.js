@@ -1,5 +1,7 @@
-import { tradingApi } from '../api/tradingApi';
-import { formatCurrency, formatPercentage, debounce } from '../utils/helpers';
+import { tradingApi } from './tradingApi.js';
+import { formatCurrency, formatPercentage, debounce } from './helpers.js';
+
+
 
 export function initializeTrading() {
     const tradingPage = document.querySelector('.trading-page');

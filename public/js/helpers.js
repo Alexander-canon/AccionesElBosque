@@ -26,31 +26,9 @@ export function formatPercentage(value) {
     }).format(value / 100);
 }
 
-// Handle API errors
 export function handleApiError(error) {
     console.error('API Error:', error);
-    let message = 'Ha ocurrido un error. Por favor, intenta de nuevo.';
-    
-    if (error.response) {
-        switch (error.response.status) {
-            case 401:
-                message = 'No autorizado. Por favor, inicia sesión.';
-                break;
-            case 403:
-                message = 'Acceso denegado.';
-                break;
-            case 404:
-                message = 'Recurso no encontrado.';
-                break;
-            case 500:
-                message = 'Error del servidor. Por favor, intenta más tarde.';
-                break;
-            default:
-                message = error.response.data.message || message;
-        }
-    }
-    
-    return message;
+    return error?.message || 'Ha ocurrido un error. Por favor, intenta nuevamente.';
 }
 
 // Validate email
