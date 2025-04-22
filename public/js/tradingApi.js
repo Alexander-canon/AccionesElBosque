@@ -5,32 +5,32 @@ class TradingApi {
     // Obtener cotización de símbolo específico (Finnhub)
     async getSymbolInfo(symbol) {
         try {
-            const response = await fetch(`${BASE_URL}/market/quotes?symbols=${symbol}`);
-            const data = await response.json();
-            const quote = data[0];
-
-            return {
-                symbol: quote.symbol,
-                price: quote.quote.currentPrice,
-                change: quote.quote.currentPrice - quote.quote.previousClosePrice,
-                open: quote.quote.openPrice,
-                high: quote.quote.highPrice,
-                low: quote.quote.lowPrice,
-                volume: 0
-            };
+          const response = await fetch(`http://localhost:8080/api/market/quotes?symbols=${symbol}`);
+          const data = await response.json();
+          const quote = data[0];
+      
+          return {
+            symbol: quote.symbol,
+            price: quote.quote?.c ?? 0,
+            change: (quote.quote?.c ?? 0) - (quote.quote?.pc ?? 0),
+            open: quote.quote?.o ?? 0,
+            high: quote.quote?.h ?? 0,
+            low: quote.quote?.l ?? 0,
+            volume: 0
+          };
         } catch (error) {
-            console.error('Error fetching symbol info:', error);
-            return {
-                symbol,
-                price: 0,
-                change: 0,
-                open: 0,
-                high: 0,
-                low: 0,
-                volume: 0
-            };
+          console.error('Error fetching symbol info:', error);
+          return {
+            symbol,
+            price: 0,
+            change: 0,
+            open: 0,
+            high: 0,
+            low: 0,
+            volume: 0
+          };
         }
-    }
+      }
 
     // Obtener lista de cotizaciones (símbolos predefinidos)
     async getSymbols() {

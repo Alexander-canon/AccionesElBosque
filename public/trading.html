@@ -30,16 +30,15 @@
   </nav>
 
   <!-- Panel de Trading -->
-  <main class="trading-container">
+  <main class="trading-container trading-page">
     <!-- Panel Izquierdo - Lista de Símbolos -->
     <aside class="symbols-panel">
       <div class="search-bar">
-        <input type="text" name="symbol" placeholder="Buscar símbolo..." />
+        <input type="text" placeholder="Buscar símbolo..." />
         <span class="material-icons">search</span>
-        <div class="symbol-suggestions"></div>
       </div>
       <div class="symbols-list">
-        <!-- Se llenará dinámicamente -->
+        <div class="market-data"></div> <!-- 🔧 Aquí se pintan las acciones -->
       </div>
     </aside>
 
@@ -142,10 +141,12 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
   <script type="module">
     import { initializeTrading } from './js/trading.js';
     document.addEventListener('DOMContentLoaded', initializeTrading);
   </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
