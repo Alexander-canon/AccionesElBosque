@@ -148,201 +148,31 @@
                 return;
             }
             
-            // Modo fallback usando localStorage como alternativa
-            function authenticateFallback() {
-                console.log('Usando modo fallback para autenticación (localStorage)');
-                
-                // Buscar usuarios registrados localmente
-                const users = JSON.parse(localStorage.getItem('users')) || [];
-                
-                // Credenciales predefinidas para demostración
-                const hardcodedUsers = [
-                    { 
-                        username: 'admin', 
-                        password: '12345', 
-                        email: 'admin@elbosque.edu.co',
-                        fullName: 'Administrador Sistema', 
-                        role: 'ADMIN', 
-                        redirect: 'admin.html' 
-                    },
-                    { 
-                        username: 'profesor', 
-                        password: '12345', 
-                        email: 'profesor@elbosque.edu.co', 
-                        fullName: 'Profesor Demo',
-                        role: 'TEACHER', 
-                        redirect: 'trading.html' 
-                    },
-                    { 
-                        username: 'estudiante', 
-                        password: '12345', 
-                        email: 'estudiante@elbosque.edu.co', 
-                        fullName: 'Estudiante Demo',
-                        role: 'STUDENT', 
-                        redirect: 'trading.html' 
-                    },
-                    { 
-                        username: 'monitor', 
-                        password: '12345', 
-                        email: 'monitor@elbosque.edu.co', 
-                        fullName: 'Monitor Demo',
-                        role: 'MONITOR', 
-                        redirect: 'trading.html' 
-                    },
-                    { 
-                        username: 'invitado', 
-                        password: '12345', 
-                        email: 'invitado@elbosque.edu.co', 
-                        fullName: 'Usuario Invitado',
-                        role: 'GUEST', 
-                        redirect: 'trading.html' 
-                    }
-                ];
-                
-                // Combinar los usuarios predefinidos con los registrados localmente
-                const allUsers = [...hardcodedUsers, ...users];
-                
-                // Verificar si es un correo electrónico
-                const isEmail = usernameOrEmail.includes('@');
-                
-                // Buscar usuario por nombre de usuario o correo electrónico
-                const user = allUsers.find(user => 
-                    (isEmail ? (user.email === usernameOrEmail) : (user.username === usernameOrEmail)) && 
-                    user.password === password
-                );
-                
-                if (user) {
-                    // Guardar información de sesión
-                    localStorage.setItem('currentUser', JSON.stringify({
-                        username: user.username,
-                        fullName: user.fullName || user.username,
-                        role: user.role,
-                        id: user.id || 0
-                    }));
-                    
-                    // Redirigir según el rol
-                    if (user.role === 'ADMIN') {
-                        window.location.href = 'admin.html';
-                    } else {
-                        window.location.href = 'trading.html';
-                    }
-                } else {
-                    document.getElementById('error-message').textContent = 'Usuario o contraseña incorrectos';
-                    document.getElementById('error-message').style.display = 'block';
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Iniciar Sesión';
-                }
-            }
-            
-            // Usar directamente el modo fallback para garantizar el funcionamiento
-            authenticateFallback();
-            
-            /* Descomentar esta sección si deseas intentar primero con el backend
-            // Modo de autenticación con backend
-            function authenticateWithBackend() {
-                // Determinar si es email o username
-                const isEmail = usernameOrEmail.includes('@');
-                
-                fetch('/api/auth/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        username: usernameOrEmail,
-                        password: password
-                    })
-                })
-                .then(response => {
-                    // Verificar si hay contenido en la respuesta
-                    if (response.status === 204 || response.headers.get('content-length') === '0') {
-                        throw new Error('No se recibió respuesta del servidor');
-                    }
-                    
-                    // Intentar convertir a JSON solo si hay contenido
-                    if (!response.ok) {
-                        return response.text().then(text => {
-                            try {
-                                // Intentar parsear como JSON
-                                return JSON.parse(text);
-                            } catch (e) {
-                                // Si no es JSON válido, crear objeto de error genérico
-                                throw new Error('Error de autenticación: respuesta no válida');
-                            }
-                        }).then(data => {
-                            throw new Error(data.message || 'Error de autenticación');
-                        });
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.success) {
-                        // Guardar información de sesión
-                        localStorage.setItem('currentUser', JSON.stringify({
-                            username: data.user.username,
-                            role: data.user.role,
-                            id: data.user.id
-                        }));
-                        
-                        // Redirigir según el rol
-                        const role = data.user.role;
-                        if (role === 'ADMIN') {
-                            window.location.href = 'admin.html';
-                        } else {
-                            window.location.href = 'trading.html';
-                        }
-                    } else {
-                        document.getElementById('error-message').textContent = 'Usuario o contraseña incorrectos';
-                        document.getElementById('error-message').style.display = 'block';
-                        submitBtn.disabled = false;
-                        submitBtn.textContent = 'Iniciar Sesión';
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    
-                    // Ampliar los casos que activan el fallback
-                    if (error.message.includes('Failed to fetch') || 
-                        error.message.includes('NetworkError') ||
-                        error.message.includes('JSON') ||
-                        error.message.includes('Unexpected end') ||
-                        error.message.includes('respuesta no válida') ||
-                        error.message.includes('No se recibió respuesta')) {
-                        
-                        document.getElementById('error-message').textContent = 'Usando modo offline para autenticación';
-                        document.getElementById('error-message').style.display = 'block';
-                        
-                        // Esperar un poco para que el usuario vea el mensaje
-                        setTimeout(() => {
-                            authenticateFallback();
-                        }, 1000);
-                    } else {
-                        document.getElementById('error-message').textContent = error.message || 'Error en la autenticación';
-                        document.getElementById('error-message').style.display = 'block';
-                        submitBtn.disabled = false;
-                        submitBtn.textContent = 'Iniciar Sesión';
-                    }
-                });
-            }
-            
             try {
-                authenticateWithBackend();
+                // Intentar iniciar sesión
+                const user = loginUser(usernameOrEmail, password);
+                
+                // Redirigir según el rol
+                if (user.role === 'ADMIN') {
+                    window.location.href = 'admin.html';
+                } else {
+                    window.location.href = 'trading.html';
+                }
             } catch (error) {
-                console.error('Error inicial:', error);
-                authenticateFallback();
+                document.getElementById('error-message').textContent = error.message;
+                document.getElementById('error-message').style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Iniciar Sesión';
             }
-            */
         });
         
         // Añadir hover effect en dispositivos táctiles
         document.querySelectorAll('button, a').forEach(element => {
             element.addEventListener('touchstart', function() {
-                // Añadir clase hover para simular efecto en dispositivos táctiles
                 this.classList.add('hover-effect');
             });
             
             element.addEventListener('touchend', function() {
-                // Remover clase hover
                 this.classList.remove('hover-effect');
             });
         });

@@ -67,9 +67,10 @@
                     <span class="material-icons">school</span>
                     <select id="role" name="role" required>
                         <option value="">Selecciona un rol</option>
+                        <option value="STUDENT">Persona Natural</option>
                         <option value="STUDENT">Estudiante</option>
-                        <option value="TEACHER">Profesor</option>
                         <option value="MONITOR">Monitor</option>
+                        <option value="TEACHER">Profesor</option>
                     </select>
                 </div>
 
@@ -211,34 +212,9 @@
                 role: role
             };
 
-            // Modo fallback (localStorage) si el servidor no está disponible
-            function registerFallback(userData) {
-                console.log('Usando modo fallback para registro (localStorage)');
-                
-                // Simular una base de datos local con localStorage
-                let users = JSON.parse(localStorage.getItem('users')) || [];
-                
-                // Verificar si el usuario o email ya existen
-                const userExists = users.some(user => 
-                    user.username === userData.username || 
-                    user.email === userData.email
-                );
-                
-                if (userExists) {
-                    document.getElementById('error-message').textContent = 'El usuario o correo ya existe';
-                    document.getElementById('error-message').style.display = 'block';
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Registrarse';
-                    return false;
-                }
-                
-                // Asignar ID y guardar usuario
-                userData.id = users.length + 1;
-                userData.createdAt = new Date().toISOString();
-                userData.status = 'ACTIVE';
-                
-                users.push(userData);
-                localStorage.setItem('users', JSON.stringify(users));
+            try {
+                // Intentar registrar usuario
+                registerUser(userData);
                 
                 // Mostrar mensaje de éxito
                 document.getElementById('success-message').style.display = 'block';
@@ -248,77 +224,12 @@
                 setTimeout(() => {
                     window.location.href = 'login.html';
                 }, 2000);
-                
-                return true;
-            }
-
-            // Usar directamente el modo fallback para garantizar el funcionamiento
-            registerFallback(userData);
-            
-            /* Descomentar esta sección si deseas intentar primero con el backend
-            // Intentar registrar en el backend
-            fetch('/api/auth/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(userData)
-            })
-            .then(response => {
-                if (!response.ok) {
-                    return response.text().then(text => {
-                        try {
-                            // Intentar parsear como JSON
-                            return JSON.parse(text);
-                        } catch (e) {
-                            // Si no es JSON válido, crear objeto de error genérico
-                            throw new Error('Error en el registro: respuesta no válida');
-                        }
-                    }).then(data => {
-                        throw new Error(data.message || 'Error en el registro');
-                    });
-                }
-                return response.json();
-            })
-            .then(data => {
-                // Registro exitoso
-                document.getElementById('success-message').style.display = 'block';
-                document.getElementById('registerForm').reset();
-                
-                // Redirigir después de un breve retraso
-                setTimeout(() => {
-                    window.location.href = 'login.html';
-                }, 2000);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                
-                // Si hay un error de conexión con el servidor, usar el modo fallback
-                if (error.message.includes('Failed to fetch') || 
-                    error.message.includes('NetworkError') ||
-                    error.message.includes('JSON') ||
-                    error.message.includes('Unexpected end') ||
-                    error.message.includes('respuesta no válida')) {
-                    
-                    if (registerFallback(userData)) {
-                        document.getElementById('success-message').style.display = 'block';
-                        document.getElementById('registerForm').reset();
-                        
-                        // Redirigir después de un breve retraso
-                        setTimeout(() => {
-                            window.location.href = 'login.html';
-                        }, 2000);
-                        return;
-                    }
-                } else {
-                    document.getElementById('error-message').textContent = error.message || 'Error al registrar usuario';
-                    document.getElementById('error-message').style.display = 'block';
-                }
-                
+            } catch (error) {
+                document.getElementById('error-message').textContent = error.message;
+                document.getElementById('error-message').style.display = 'block';
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Registrarse';
-            });
-            */
+            }
         });
 
         // Validación en tiempo real de contraseñas
@@ -336,12 +247,10 @@
         // Añadir hover effect en dispositivos táctiles
         document.querySelectorAll('button, a, select').forEach(element => {
             element.addEventListener('touchstart', function() {
-                // Añadir clase hover para simular efecto en dispositivos táctiles
                 this.classList.add('hover-effect');
             });
             
             element.addEventListener('touchend', function() {
-                // Remover clase hover
                 this.classList.remove('hover-effect');
             });
         });
