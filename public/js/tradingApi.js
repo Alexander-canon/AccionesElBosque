@@ -1,106 +1,88 @@
-import { API_CONFIG, ENDPOINTS, requestInterceptor, responseInterceptor, errorInterceptor } from './config';
-import { handleApiError } from '../utils/helpers';
+// API base del backend Spring Boot
+const BASE_URL = 'http://localhost:8080/api';
 
-// Trading API Class
 class TradingApi {
-    constructor() {
-        this.baseURL = `${API_CONFIG.BASE_URL}/${API_CONFIG.VERSION}`;
-    }
-
-    // Get market data
-    async getMarketData(symbol) {
+    // Obtener cotización de símbolo específico (Finnhub)
+    async getSymbolInfo(symbol) {
         try {
-            const response = await fetch(`${this.baseURL}${ENDPOINTS.TRADING.MARKET_DATA}/${symbol}`, {
-                method: 'GET',
-                headers: requestInterceptor({ headers: API_CONFIG.HEADERS }).headers
-            });
-            return responseInterceptor(response);
+          const response = await fetch(`http://localhost:8080/api/market/quotes?symbols=${symbol}`);
+          const data = await response.json();
+          const quote = data[0];
+      
+          return {
+            symbol: quote.symbol,
+            price: quote.quote?.c ?? 0,
+            change: (quote.quote?.c ?? 0) - (quote.quote?.pc ?? 0),
+            open: quote.quote?.o ?? 0,
+            high: quote.quote?.h ?? 0,
+            low: quote.quote?.l ?? 0,
+            volume: 0
+          };
         } catch (error) {
-            throw handleApiError(error);
+          console.error('Error fetching symbol info:', error);
+          return {
+            symbol,
+            price: 0,
+            change: 0,
+            open: 0,
+            high: 0,
+            low: 0,
+            volume: 0
+          };
         }
+      }
+
+    // Obtener lista de cotizaciones (símbolos predefinidos)
+    async getSymbols() {
+        const predefinedSymbols = ['AAPL', 'GOOGL', 'MSFT', 'TSLA'];
+        const results = await Promise.all(predefinedSymbols.map(s => this.getSymbolInfo(s)));
+        return results;
     }
 
-    // Place order
+    // Simulación de orden (aún no implementado en el backend)
     async placeOrder(orderData) {
-        try {
-            const response = await fetch(`${this.baseURL}${ENDPOINTS.TRADING.ORDERS}`, {
-                method: 'POST',
-                headers: requestInterceptor({ headers: API_CONFIG.HEADERS }).headers,
-                body: JSON.stringify(orderData)
-            });
-            return responseInterceptor(response);
-        } catch (error) {
-            throw handleApiError(error);
-        }
+        // TODO: Implementar con backend real
+        return {
+            success: true,
+            orderId: crypto.randomUUID()
+        };
     }
 
-    // Get portfolio
-    async getPortfolio() {
-        try {
-            const response = await fetch(`${this.baseURL}${ENDPOINTS.TRADING.PORTFOLIO}`, {
-                method: 'GET',
-                headers: requestInterceptor({ headers: API_CONFIG.HEADERS }).headers
-            });
-            return responseInterceptor(response);
-        } catch (error) {
-            throw handleApiError(error);
-        }
-    }
-
-    // Get positions
+    // Obtener posiciones del portafolio (simulado)
     async getPositions() {
-        try {
-            const response = await fetch(`${this.baseURL}${ENDPOINTS.TRADING.POSITIONS}`, {
-                method: 'GET',
-                headers: requestInterceptor({ headers: API_CONFIG.HEADERS }).headers
-            });
-            return responseInterceptor(response);
-        } catch (error) {
-            throw handleApiError(error);
-        }
+        // TODO: reemplazar por datos reales del backend
+        return [
+            {
+                symbol: 'AAPL',
+                quantity: 10,
+                averagePrice: 150,
+                totalValue: 1570,
+                pnl: 70
+            },
+            {
+                symbol: 'GOOGL',
+                quantity: 5,
+                averagePrice: 2700,
+                totalValue: 2750,
+                pnl: 50
+            }
+        ];
     }
 
-    // Get order history
-    async getOrderHistory(params = {}) {
-        try {
-            const queryString = new URLSearchParams(params).toString();
-            const response = await fetch(`${this.baseURL}${ENDPOINTS.TRADING.ORDERS}/history?${queryString}`, {
-                method: 'GET',
-                headers: requestInterceptor({ headers: API_CONFIG.HEADERS }).headers
-            });
-            return responseInterceptor(response);
-        } catch (error) {
-            throw handleApiError(error);
-        }
-    }
-
-    // Cancel order
-    async cancelOrder(orderId) {
-        try {
-            const response = await fetch(`${this.baseURL}${ENDPOINTS.TRADING.ORDERS}/${orderId}`, {
-                method: 'DELETE',
-                headers: requestInterceptor({ headers: API_CONFIG.HEADERS }).headers
-            });
-            return responseInterceptor(response);
-        } catch (error) {
-            throw handleApiError(error);
-        }
-    }
-
-    // Get available symbols
-    async getSymbols(params = {}) {
-        try {
-            const queryString = new URLSearchParams(params).toString();
-            const response = await fetch(`${this.baseURL}${ENDPOINTS.TRADING.SYMBOLS}?${queryString}`, {
-                method: 'GET',
-                headers: requestInterceptor({ headers: API_CONFIG.HEADERS }).headers
-            });
-            return responseInterceptor(response);
-        } catch (error) {
-            throw handleApiError(error);
-        }
+    // Obtener historial de órdenes (simulado)
+    async getOrderHistory() {
+        // TODO: reemplazar por datos reales del backend
+        return [
+            {
+                date: new Date().toISOString(),
+                symbol: 'AAPL',
+                type: 'market',
+                quantity: 10,
+                price: 150,
+                status: 'Ejecutada'
+            }
+        ];
     }
 }
 
-// Export singleton instance
-export const tradingApi = new TradingApi(); 
+export const tradingApi = new TradingApi();

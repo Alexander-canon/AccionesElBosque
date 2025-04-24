@@ -1,5 +1,7 @@
-import { tradingApi } from '../api/tradingApi';
-import { formatCurrency, formatPercentage, debounce } from '../utils/helpers';
+import { tradingApi } from './tradingApi.js';
+import { formatCurrency, formatPercentage, debounce } from './helpers.js';
+
+
 
 export function initializeTrading() {
     const tradingPage = document.querySelector('.trading-page');
@@ -14,12 +16,14 @@ export function initializeTrading() {
 
 // Market Data Component
 async function initializeMarketData() {
+    console.log("✅ Inicializando mercado");
     const marketDataContainer = document.querySelector('.market-data');
     if (!marketDataContainer) return;
 
     // Get initial market data
     try {
         const symbols = await tradingApi.getSymbols();
+        console.log("📦 Datos recibidos desde el backend:", symbols);
         updateMarketData(symbols);
     } catch (error) {
         console.error('Error fetching market data:', error);
