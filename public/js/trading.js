@@ -31,13 +31,15 @@ async function initializeMarketData() {
 
     // Set up auto-refresh
     setInterval(async () => {
+        console.log("🔄 Refrescando datos del mercado...");
         try {
             const symbols = await tradingApi.getSymbols();
+            console.log("📦 Datos actualizados:", symbols);
             updateMarketData(symbols);
         } catch (error) {
             console.error('Error refreshing market data:', error);
         }
-    }, 5000); // Refresh every 5 seconds
+    }, 60000); // Refresh every 5 seconds
 }
 
 function updateMarketData(symbols) {
