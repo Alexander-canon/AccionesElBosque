@@ -1,3 +1,4 @@
+Dashboard
 HELP.md
 
 # Carpetas de compilación
@@ -46,3 +47,6 @@ out/
 # Archivos del sistema operativo
 .DS_Store
 Thumbs.db
+=======
+*.txt
+master
