@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Barra de Navegación Simplificada -->
+    
     <nav class="navbar navbar-simple">
         <div class="logo">
             <a href="index.html"><img src="assets/images/logo/logo.svg" class="logo-img" alt="Acciones El Bosque"></a>
@@ -32,37 +32,80 @@
                 <p>Crea tu cuenta para empezar a operar</p>
             </div>
             
-            <form id="registerForm" class="register-form">
+            <form id="registerForm" class="register-form" method="POST" action="http://localhost:8080/api/usuarios/registrar">
                 <div class="form-group">
                     <span class="material-icons">person</span>
-                    <input type="text" id="fullName" name="fullName" placeholder="Nombre Completo" required autocomplete="name">
+                    <input type="text" id="firstName" name="firstName" placeholder="Nombre" required>
                 </div>
-
+            
+                <div class="form-group">
+                    <span class="material-icons">person_outline</span>
+                    <input type="text" id="lastName" name="lastName" placeholder="Apellido" required>
+                </div>
+            
                 <div class="form-group">
                     <span class="material-icons">email</span>
-                    <input type="email" id="email" name="email" placeholder="Correo Institucional" 
-                           pattern=".+@unbosque\.edu\.co" 
+                    <input type="email" id="email" name="email" placeholder="Correo Institucional"
+                           pattern=".+@unbosque\.edu\.co"
                            title="Debe ser un correo institucional (@unbosque.edu.co)" required autocomplete="email">
                     <span class="form-hint">Debe ser un correo institucional (@unbosque.edu.co)</span>
                 </div>
-
+            
+                <div class="form-group">
+                    <span class="material-icons">phone</span>
+                    <input type="tel" id="phone" name="phone" placeholder="Número de Teléfono" required>
+                </div>
+            
+                <div class="form-group">
+                    <span class="material-icons">home</span>
+                    <input type="text" id="address" name="address" placeholder="Dirección" required>
+                </div>
+            
+                <div class="form-group">
+                    <span class="material-icons">location_city</span>
+                    <input type="text" id="city" name="city" placeholder="Ciudad" required>
+                </div>
+            
+                <div class="form-group">
+                    <span class="material-icons">map</span>
+                    <input type="text" id="state" name="state" placeholder="Departamento/Estado" required>
+                </div>
+            
+                <div class="form-group">
+                    <span class="material-icons">markunread_mailbox</span>
+                    <input type="text" id="postalCode" name="postalCode" placeholder="Código Postal" required>
+                </div>
+            
+                <div class="form-group">
+                    <span class="material-icons">flag</span>
+                    <input type="text" id="country" name="country" placeholder="País" required>
+                </div>
+            
+                <div class="form-group">
+                    <span class="material-icons">calendar_today</span>
+                    <input type="date" id="birthDate" name="birthDate" placeholder="Fecha de Nacimiento" required>
+                </div>
+            
+                <div class="form-group">
+                    <span class="material-icons">fingerprint</span>
+                    <input type="text" id="ssn" name="ssn" placeholder="Número de Seguro Social (SSN)" required>
+                </div>
+            
                 <div class="form-group">
                     <span class="material-icons">account_circle</span>
-                    <input type="text" id="username" name="username" placeholder="Usuario" required autocomplete="username">
+                    <input type="text" id="username" name="username" placeholder="Usuario" required>
                 </div>
-                
+            
                 <div class="form-group">
                     <span class="material-icons">lock</span>
-                    <input type="password" id="password" name="password" 
-                           placeholder="Crear contraseña" 
-                           required>
+                    <input type="password" id="password" name="password" placeholder="Crear contraseña" required>
                 </div>
-
+            
                 <div class="form-group">
                     <span class="material-icons">lock_outline</span>
-                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirmar Contraseña" required autocomplete="new-password">
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirmar Contraseña" required>
                 </div>
-
+            
                 <div class="form-group">
                     <span class="material-icons">school</span>
                     <select id="role" name="role" required>
@@ -73,22 +116,22 @@
                         <option value="TEACHER">Profesor</option>
                     </select>
                 </div>
-
+            
                 <div class="terms-privacy">
                     <label>
                         <input type="checkbox" id="termsAccept" required>
                         <span>Acepto los <a href="terms.html" class="terms-link">Términos y Condiciones</a> y la <a href="privacy.html" class="terms-link">Política de Privacidad</a>.</span>
                     </label>
                 </div>
-
+            
                 <div id="error-message" class="error-message" style="display: none;">
                     Error en el registro
                 </div>
-
+            
                 <div id="success-message" class="success-message" style="display: none;">
                     Registro exitoso. Serás redirigido para iniciar sesión.
                 </div>
-
+            
                 <button type="submit" class="btn-register" id="submitBtn">Registrarse</button>
             </form>
 
@@ -98,7 +141,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="main-footer">
         <div class="footer-content">
             <div class="footer-section">
@@ -146,64 +188,46 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script>
         document.getElementById('registerForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // Ocultar mensajes previos
+    
             document.getElementById('error-message').style.display = 'none';
             document.getElementById('success-message').style.display = 'none';
-            
-            // Desactivar botón para prevenir múltiples envíos
+    
             const submitBtn = document.getElementById('submitBtn');
             submitBtn.disabled = true;
             submitBtn.textContent = 'Procesando...';
-            
-            // Validar campos requeridos
-            const fullName = document.getElementById('fullName').value.trim();
+    
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
             const email = document.getElementById('email').value.trim();
             const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value.trim();
             const confirmPassword = document.getElementById('confirmPassword').value.trim();
             const role = document.getElementById('role').value;
             const termsAccept = document.getElementById('termsAccept').checked;
-            
+    
             if (!fullName || !email || !username || !password || !confirmPassword || !role) {
-                document.getElementById('error-message').textContent = 'Todos los campos son obligatorios';
-                document.getElementById('error-message').style.display = 'block';
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Registrarse';
+                showError('Todos los campos son obligatorios');
                 return;
             }
-            
+    
             if (!termsAccept) {
-                document.getElementById('error-message').textContent = 'Debes aceptar los términos y condiciones';
-                document.getElementById('error-message').style.display = 'block';
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Registrarse';
+                showError('Debes aceptar los términos y condiciones');
                 return;
             }
-            
-            // Validar contraseñas
+    
             if (password !== confirmPassword) {
-                document.getElementById('error-message').textContent = 'Las contraseñas no coinciden';
-                document.getElementById('error-message').style.display = 'block';
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Registrarse';
+                showError('Las contraseñas no coinciden');
                 return;
             }
-
-            // Validar correo institucional
+    
             if (!email.endsWith('@unbosque.edu.co')) {
-                document.getElementById('error-message').textContent = 'Debe usar un correo institucional (@unbosque.edu.co)';
-                document.getElementById('error-message').style.display = 'block';
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Registrarse';
+                showError('Debe usar un correo institucional (@unbosque.edu.co)');
                 return;
             }
-
-            // Preparar datos para enviar al servidor
+    
             const userData = {
                 fullName: fullName,
                 email: email,
@@ -211,50 +235,61 @@
                 password: password,
                 role: role
             };
-
-            try {
-                // Intentar registrar usuario
-                registerUser(userData);
-                
-                // Mostrar mensaje de éxito
+    
+            fetch('http://localhost:8080/api/usuarios/registrar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al registrar usuario. Por favor, intenta nuevamente.');
+                }
+                return response.json();
+            })
+            .then(data => {
                 document.getElementById('success-message').style.display = 'block';
                 document.getElementById('registerForm').reset();
-                
-                // Redirigir después de un breve retraso
                 setTimeout(() => {
                     window.location.href = 'login.html';
                 }, 2000);
-            } catch (error) {
-                document.getElementById('error-message').textContent = error.message;
-                document.getElementById('error-message').style.display = 'block';
+            })
+            .catch(error => {
+                showError(error.message);
+            });
+    
+            function showError(message) {
+                const errorMsg = document.getElementById('error-message');
+                errorMsg.textContent = message;
+                errorMsg.style.display = 'block';
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Registrarse';
             }
         });
-
-        // Validación en tiempo real de contraseñas
+    
         document.getElementById('confirmPassword').addEventListener('input', function() {
             const password = document.getElementById('password').value;
             const confirmPassword = this.value;
-            
+    
             if (password !== confirmPassword) {
                 this.setCustomValidity('Las contraseñas no coinciden');
             } else {
                 this.setCustomValidity('');
             }
         });
-        
-        // Añadir hover effect en dispositivos táctiles
+    
         document.querySelectorAll('button, a, select').forEach(element => {
             element.addEventListener('touchstart', function() {
                 this.classList.add('hover-effect');
             });
-            
+    
             element.addEventListener('touchend', function() {
                 this.classList.remove('hover-effect');
             });
         });
     </script>
-    <script src="js/utils/auth.js"></script>
+    
 </body>
 </html>
